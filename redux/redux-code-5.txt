@@ -1,0 +1,43 @@
+																																		The Redux Thunk Theory
+
+We have now connected Redux to our app, and we have defined dummy data in our initialState inside of our rootReducer and then we are grabbing that Redux store inside our Card component in the 
+Card.js file at the mapStateToProps() function and from there we are passing it to the Card React component, and also we are performing an action on it, using which we can delete the card. 
+
+So, all of these are working dandy and we are still using the dummy data. But generally in a React application we are fetching data from an outside API or a real database. So, how and where we can
+do that exactly?
+
+Let's just think about it, what if we try to do this inside the rootReducer? Before returning the state somewhere in a React component, we go out and retrieve the data from an API to update the state. 
+
+Okay! It is a good thought but actually it is not going to work because these tasks go out and communicate with an API and that is going to take sometime as by that time they have completed and 
+returned, so that is why it is not going to work. 
+
+So, we need to go somewhere else and grab that data externally. What about the Card component itself? So, in this case we could use a lifecycle method when a component is created, we could go 
+out and grab the data and then we could dispatch an action, which is then taken in the reducer to update the state. Maybe, we can do that, but we don't really have a true seperation. Ideally, we would
+like to keep anything with data manipultion outside of the component. There got to be another way we can do this. 
+
+So, we have our central Redux data store, and if we want we can get the data from the store, inside our mapStateToProps() function and then pass it to the React component and the way we do that
+is by mapping the state to the props, as we have done it in our previous lesson. 
+
+So, this is where we grab the cards and output those to the DOM. Okay, so then we said if we want to change their state, if we wanted to add a card or delete a card or something like that, then we 
+would dispatch an action from the component and that action would describe the kind of change that we want to make to the Store, such as "add card" or "delete card", along with any additional data
+that we need to edit the state. Then the additional payload is passed into the reducer, and that is the thing that updates the state. 
+
+Alright! Now we know that, what we just described is the basics of redux, but what we are talking about here is, how to get out and grab the data externally because now all we are doing is grabbing the
+dummy data from the Redux Store and dragging that into our application. 
+
+But actually we need to go out and grab some data from an external source, such as a JSON placeholder API. So, where do we do that? We already know that we do not want to do it from the React
+component and we know that we cannot do it from inside the rootReducer. There is only one section where we can can do it, and that is between dispatching an action and the reducer. 
+
+So, we can grab some data and then continue with the Dispatch and then we pass it to the reducer to carry on as normal in order to update the state. But to do it we will need to use some Redux 
+middleware called Redux Thunk. Redux Thunk will be running between the Reducer and the Dispatch, so what Redux Thunk will allow us to do is perform asynchronous tasks inside of our action 
+creators. 
+
+Now, we have seen action creators in the previous lessons where we dispatch an action in our Card component file but now Redux Thunk will make us return a function instead of returning an action 
+creator. Then inside that function we can pause the dispatch and put it on hold for a second and then we can perform an asynchronous request like, go out to an API, grab the data, then we will resume
+the dispatch and then finally pass it to the reducer.
+
+So, now the asynchronous request to the API has been completed, the React component will still dispatch an action as normal, and then call an action creator as normal but inside the action creator is
+where we will halt the process. So, we are now returning a function instead of an object, unlike what we did normally and then we go out and grab the data, then we resume the dispatch and then we
+pass it to the reducer of the action. 
+
+We are going to be using the Redux Thunk to halt the dispatch to allow us to go out and grab some data from an outside API and that is what we are going to code in the next lesson.  

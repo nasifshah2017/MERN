@@ -1,0 +1,785 @@
+src/index.js 
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import rootReducer from './reducers/rootReducer';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+
+const store = createStore(rootReducer, applyMiddleware(thunk));   // The Redux Store
+
+ReactDOM.render(
+  <Provider store={store}>  { /* Passing the Redux Store to the React application as a prop */ }
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
+
+// Now we want to install Redux Thunk, so that we can halt the dispatch and the
+// action creator. Then return a function inside that action creator and that function
+// creates some kind of asynchronous task to go out and communicate with the JSON
+// placeholder API.
+
+// So, lets first install Redux Thunk,
+
+// npm install redux-thunk axios
+
+// We are installing axios with redux thunk because we are going to be fetching
+// some data from an outside API with the axios function.
+
+// Ok now that it is installing, we can go and use it inside out store. So, the
+// line where we are declaring the "store" variable and assigning it to the
+// createStore() function, we need to apply on it some middleware.
+
+// So, remember Redux Thunk is middleware and we need to apply that to our store.
+// So, first of all we are going to import "thunk" from 'redux-thunk' (line-7),
+// then we need to apply middleware inside the store (line-9), and we do that as
+// a second parameter inside the createStore() method, but first of all we need
+// to import the 'applyMiddleware()' method from 'redux' (line-5), and it is a
+// function in its self and we need to send 'thunk' as its parameter and as a
+// middleware.
+
+// So, the 'applyMiddleware()' method can take in a list of middlewares and it
+// turns them into a store inhancer. So, we can add many different middlewares
+// as its parameters and we can also add many different store inhancers in there
+// too.
+
+// By applying this "thunk" middleware this is now enhancing our store with extra
+// functionality, that functionality is how we are going to be able to return a
+// function inside our action creators which can then interact with an API.
+
+// So, lets set up a simple action creator and then we can quickly see how this
+// works. We will setup our action creator at our cardActions.js file. 
+
+src/actions/cardActions.js
+
+import axios from 'axios';
+
+export const deleteCard = (id) => {
+  return {
+    type: 'DELETE_CARD',
+    id: id
+  }
+}
+
+export const fetchUsers = () => {
+  return (dispatch) => {
+    axios.get('https://jsonplaceholder.typicode.com/users')
+      .then(({ data }) => {
+        dispatch({ type: 'FETCH_USERS', payload: data })
+      })
+  }
+}
+
+// Now, inside the Card component in the Card.js file when we dispatch an action
+// we are creating that action directly in the dispatch() method inside the
+// mapDispatchToProps() function, and that is absolutely fine as it works.
+
+// But, there is more. To achieve better seperation of concerns and to make our code
+// and actions more reusable, a lot of developers would prefer to use action creators
+// to create these actions in seperate files. Action creators are just functions that
+// will generate an action.
+
+// And when we will call that function in the dispatch() method inside the mapDispatchToProps()
+// function, it will generate an action for us. It might seem a little weird at first
+// but this is going to help us with asynchronous code later on and also if you need to
+// dipatch the same kind of action from different locations then you can do that easily
+// as well because we have one action generator and we don't need to retype out the same
+// kind of action instead we can just call that action function.
+
+// --------------------------------------------------------------------------------------------- //
+
+// Under the deleteCard() action we will create a new action creator, we will call it fetchUsers()
+// and it will be an arrow function. Now, I have called the action creator as fetchUsers() because
+// the purpose of fetchUsers() is to make an API request. So inside this action creator we need to
+// return a function and that function is going to dispatch the data, that we are going to fetch from
+// API, to the reducer.
+
+// This time we are going to return a function instead of a JavaScript object. So, only with Redux Thunk
+// we can return JavaScript function. So we are returning an arrow function and the first argument is going
+// to be the dispatch() method because we are going to dispatch an action to the reducer and the action is
+// going to contain type and payload properties. So, we are going to fetch a payload from the JSON Placeholder
+// API.
+
+// So, lets visit the JSON Placeholder API site (https://jsonplaceholder.typicode.com). From this website we
+// will pick the users' endpoint (https://jsonplaceholder.typicode.com/users) which we will use to make our
+// API request to the server.
+
+// We need to import the axios() method from the 'axios' library to fetch the data and now inside the function
+// that we are returning as the action creator, we need to make the axios request using the users' endpoint.
+// Then after that we are going to use the .then() method, because this is an asynchronous operation where we
+// need to wait to get back the response for the request. The .then() method takes a callback as its parameter
+// and this callback will provide us with the data that we fetch from the JSON API.
+
+// Now, inside of the .then() method we are going to dispatch an action to the reducer, the dispatch() method
+// will take the action object as parameter where the 'type' of the action is 'FETCH_USERS' and the 'payload'
+// is going to be assigned to the 'data' that we will receive from the JSON API.
+
+// Alright, so that is how we create an action creator with asynchronous operation. Now, lets go to the card
+// component and connect this action to the reducer. 
+
+src/components/Card.js
+
+import React from 'react';
+import { connect } from 'react-redux';
+import { deleteCard, fetchUsers } from '../actions/cardActions';
+
+class Card extends React.Component {
+
+//  state = { user: '' }
+
+componentDidMount() {
+  this.props.fetchUsers()
+}
+
+onButtonClick = () => {
+  let id = this.props.card.id;
+  this.props.deleteCard(id)
+  this.props.history.push('/contact')
+}
+
+  render() {
+//    const { user } = this.state
+//    console.log("----------HIT-----------");
+//    console.log(this.props);
+    const { users } = this.props
+    return(
+      users.map(user => {
+        return(
+          <div
+            className="ui raised very padded text container segment"
+            style={{ marginTop:'80px' }}
+            key={user.id}
+          >
+            <h3 className="ui header">{ user.name }</h3>
+            <p>{ user.email }</p>
+            <button className="ui primary right floated button" onClick={this.onButtonClick}>
+              Delete
+            </button>
+          </div>
+        )
+      })
+    )
+  }
+}
+
+const mapStateToProps = (state, ownProps) => {
+  let title = ownProps.match.params.user;
+  return {
+    card: state.cards.find((x) => {
+      return x.title === title
+    }),
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteCard: (id) => { dispatch(deleteCard(id)) },   // Dispatching the action object to the React component
+    fetchUsers: () => { dispatch(fetchUsers()) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Card);
+
+// We want to receive the user data from the Redux Store when we click on any
+// user's name on the Contact page. We want to show each individual user and the
+// data that belongs to the user that is inside the Redux Store.
+
+// Instead of showing the Route parameter we are going to show the data inside
+// the Redux Store in this "Card" React Component. Previously, we were getting
+// the user data from the App.js using the React Router and were showing it on
+// the user page but now we will use the Redux Store to get that data.
+
+// Now what we are going to do is connect the "Card" React Component to the
+// Redux Store and then get that individual card to show on the page.
+
+// First, we will comment out the componentDidMount() as we don't need that
+// anymore and we also commented the state object above it. Then we also have
+// commented out the varible on line-16 too.
+
+// Then we imported the connect() function from React-Redux. Then we used that
+// higher order component to wrap our "Card" component on line-41. Then, we
+// created our mapStateToProps() function. This is where we want to grab that
+// individual card containg user data.
+
+// Now, how can we grab that data? We can take a second argument in that function.
+// Here, we are calling that argument ownProps, and this ownProps refers to the
+// props of this "Card" component. So, the ownProps is going to contain information
+// about the Route parameters and then we can grab the Route parameter from the
+// Route and then we are going use that Route parameter to find a particular
+// card that we want to connect to/from the Redux Store.
+
+// Then we are using the ownProps to grab the Route parameter by assigning the
+// "title" variable to "ownProps.match.params.user", and this is from where we
+// get the information on the Route parameters.
+
+// The Route parameter that we want is called the user because in our App.js file
+// it was called the user (<Route path="/:user" element={ <Card /> } />). Then,
+// when we set up the route we are grabbing the route parameter from
+// "ownProps.match.params.user", whether it is Alex, Willma or whatever the user
+// it is and we are storing it in the "title" variable. Then, we return the object
+// and inside the retrun statement we need to write what we want to apply to our
+// props for this "Card" React Component.
+
+// So, we want an individual card and that is going to be "state.cards" that we
+// received from the Redux Store and then we want to find one individual card to
+// show on the browser and to do that we are going to use the find() method and
+// this is just a normal JavaScript method, state.cards.find().
+
+// Now, inside of this method we are going to check if the x.title is equal to
+// the title variable that we declared before defining the return statement.
+// So, the 'x' variable is going to iterate through the "cards" array inside the
+// state object and it is going to look at the title of each card and if that title
+// matches the title of the user in the route parameter (ownProps.match.params.user)
+// then the function will return that card.
+
+// Then we pass this mapStateToProps() function to the connect() function as our
+// first argument and now we can get that card and show it on the browser.
+
+// The Card React Component is receiving the card as a prop and we are grabbing
+// the title and body from that card and then displaying those two properties
+// on this Card component.
+
+// -------------------------------------------------------------------------- //
+
+// Now, what if we want to change the data in the Redux Store. For example, we
+// want to delete one of the cards in the store. So, how can we do that?
+
+// So, first we want a delete button or something to delete that card. Then we
+// need to interact with the state of this React component.
+
+// We have the data in the Redux Store and we passed that data via the props to
+// this React component using the mapStateToProps() function. So, now if we want
+// want to make a change to this data in the Redux Store then we need to dispatch
+// an action from this React component and that action is going to contain a type,
+// for eaxmple 'delete card' or 'edit card' or whatever we want it to be; and it
+// also going to contain an optional payload.
+
+// So, in the case of deleting a card, the payload could be the id of the card
+// that we want to delete. Then the action gets dispatched to the Reducer and
+// the Reducer then takes that action and checks the type of that action and
+// then it takes in the payload.
+
+// Now in our case the payload is going to be the id of the card that we want to
+// delete from the Redux Store and the Reducer makes the change to the state of
+// the Redux Store by deleting the card and when the state changes we get the
+// updated state as props inside this React component.
+
+// Now we need to figure out a way to dispatch an action from this "Card" React
+// component and that is pretty easy to do. Before we defined the mapStateToProps()
+// function to connect the Redux Store with this React Component and now we are
+// going to define a function called mapDispatchToProps() and this function is
+// going to map our dispatches to our props so that we can call them from our
+// React component.
+
+// mapDispatchToProps() function is going to take an argument and that argument
+// is the dispatch() method. Here, we are mapping the dispatch to props so we are
+// passing this dispatch() function which is in the Redux Store into this
+// mapDispatchToProps() function as an argument and the dispatch() function will
+// contain the action object inside of it which the mapDispatchToProps() function
+// will return to this "Card" React component just like the mapStateToProps()
+// function.
+
+// This action object is going to represent properties that we will get as props
+// inside of this React component, just like we did the case of mapStateToProps()
+// function.
+
+// So, we want to map a function called deleteCard() inside the React component
+// because we are going to delete a card inside this React component.
+
+// So, what we want to do with the deleteCard() function is dispatch an action.
+// The deleteCard() function is going to take an argument and the argument is
+// going to be the id property of the card that we want to delete and with that
+// it will also take the type property.
+
+// We need to declare the id property inside the action object and assign that
+// property to the id that we receive with the deleteCard() function as an
+// argument.
+
+// So, now we are dispatching this action whenever we call the mapDispatchToProps()
+// function and this function is going to be attached to our props so that we can
+// use it inside this React component, but before we do that we need to take this
+// mapDispatchToProps() function and we need to pass it into the connect() function
+// as an argument as we did with the mapStateToProps() function.
+
+// So, mapStateToProps() function is always going to be the first arguemnt being
+// passed and mapDispatchToProps() function is going to be the second one after
+// that.
+
+// We need some kind of button which will trigger the deleteCard() function, so
+// lets define that button under the body of the "Card" component.
+
+// We need to attach a click event to this button and this click event function
+// is going to be called onButtonClick() and this is going to be an arrow function
+// that we are going to define before our render() method.
+
+// Inside the onButtonClick() function we need to call the deleteCard() function
+// so that it gets triggered when the user clicks the Delete button. But remember
+// we pass the id as an argument to the deleteCard() function so it expects an
+// id as an argument to this function, so we need to send the id of this card.
+
+// The id is coming from the "cards" array in the Redux Store from the rootReducer
+// which is connected to the React component using the connect() function, thats
+// why we used the "this.props" to get the id in the onButtonClick() function.
+
+// Now, we will go the rootReducer.js file, because that is where we receive the
+// action.
+
+// -------------------------------------------------------------------------- //
+
+// So, in the last section we created the onClick() event handler and whenever
+// we click the Delete button, it calls the deleteCard() method and the
+// deleteCard() method dispatches the 'DELETE_CARD' action from the
+// mapDispatchToProps() to the Reducer, so whenever that action gets dispatched,
+// the Reducer receives the action.
+
+// So, now we need to delete one of the cards from the Redux store, so lets
+// continue at the rootReducer.js file.
+
+// So, now we will look at the definition of the onClick event function which
+// calls the deleteCard() function. This is where we need to redirect the user
+// to the Contact page. After we call the deleteCard() function inside the
+// onButtonClick() function we can use the React built-in push() method to
+// redirect the user to the Contact page like this "this.props.history.push(/'contact')".
+
+// Now, if we click the Delete button on a particular card inside its page then
+// we will get redirected back to the Contact page which will not have the card
+// that was deleted.
+
+// This is how we mapDispatchToProps. How we call that dispatch from the component?
+// When that dispatch is received in the Reducer? And how we can update the state?
+// That is pretty much what Redux is in a nutshell.
+
+// ------------------------------------------------------------------------------------- //
+
+// First of all we need to import out fetchUsers() action in this file (line-3).
+// Then we need to dispatch this action in our mapDispatchToProps() function (line-57)
+// and this returns a function that dispatches an action and the the action is going
+// to be fetchUsers().
+
+// Now the only thing that we need to do is call that function. So, whenever we call that
+// function it is going to call the fetchUsers() action from the cardActions.js file and
+// then that action creator is going to make a request to an API and then the API is going
+// to return us the data. Then we are dispatching the data to the reducer.
+
+// Alright, lets call this function. So, we are going to call it inside the componentDidMount()
+// lifecycle method and we want to get the data after the component mounting is done. So, we can
+// reach the data in the Redux Store inside of our reducer. So, lets go back to the rootReducer.js
+// file.
+
+src/reducers/rootReducer.js
+
+const initialState = {
+  cards: [
+  { // Dummy Data
+    id: 1,
+    title: 'Alex',
+    body: 'Bacon ipsum dolor amet boudin salami picanha,beef ham bacon turkey strip steak brisket. Buffalo strip steak boudin andouille chislic pig. Salami rump filet mignon alcatra brisket.'
+  },
+  {
+    id: 2,
+    title: 'Willma',
+    body: 'Bacon ipsum dolor amet boudin salami picanha,beef ham bacon turkey strip steak brisket. Buffalo strip steak boudin andouille chislic pig. Salami rump filet mignon alcatra brisket.'
+  },
+  {
+    id: 3,
+    title: 'John',
+    body: 'Bacon ipsum dolor amet boudin salami picanha,beef ham bacon turkey strip steak brisket. Buffalo strip steak boudin andouille chislic pig. Salami rump filet mignon alcatra brisket.'
+  }],
+
+  users: []
+}
+
+const rootReducer = (state = initialState, action) => {
+  switch(action.type) {
+    case 'DELETE_CARD':
+      let newCard = state.cards.filter((card) => {
+        return action.id !== card.id
+      })
+      return {
+        ...state,
+        cards: newCard
+      }
+    case 'FETCH_USERS':
+      return {
+        ...state,
+        users: action.payload
+      }
+      default:
+        return state;
+  }
+}
+
+export default rootReducer;
+
+// So, the action is dispatched from the Card React Component inside the Card.js
+// file whenever the user clicks the delete button, the action is going to be
+// received here in the Redux Store at the rootReducer().
+
+// Everytime we click the Delete button its triggering the function and
+// dispatching the action to the rootReducer, but we want to permanently delete
+// this Card from the Redux Store.
+
+// -------------------------------------------------------------------------- //
+
+// So, now we want to delete one of these cards from the Redux Store. To do that
+// first of all we need to check the type of action, because we don't want to
+// delete it for every action, we only want to delete it if the action type is
+// 'DELETE_CARD'.
+
+// So, lets just perform a little check in the rootReducer() function with the
+// switch() case. So, if the case is 'DELETE_CARD' which means if the action.type
+// is equal to 'DELETE_CARD' then we want to do something; and what we are going
+// to do is update the state.
+
+// Now, remember when we update the state we do not want to do anything
+// destructive. We do not want to alter the original state of the Redux Store.
+// We want to work out a non-destructive way of doing this.
+
+// We can do that by using the filter method, because the filter method does not
+// alter the original array "cards" array in the Redux Store instead it creates
+// a new array.
+
+// So, we can say, "let newCard = state.cards.filter()", and we are going to
+// filter through these cards. So, the filter() method performs a function on
+// each individual cards and if we return 'true' for that function then we keep
+// that card in the new array and if we return 'false' then we will filter that
+// card out of the new array.
+
+// So, the filter() callback function takes each individual card as a parameter
+// that we are cycling through at the time and what we need to do is check if the
+// card ID is equal to the ID that we receive in the action.
+
+// If it does and if both the IDs are same then we need to return 'false' because
+// that would filter the card out of the array.
+
+// We need to return 'true' if the action ID and the card ID are not equal, then
+// the filter() function would not remove the card from the array.
+
+// Remember, we get the ID in the action because we passed the ID in the
+// mapDispatchToProps() function back in the Card.js file. So, now we are going
+// to create that new array which will not have the card that we deleted.
+
+// So, now we need to return a new object which represents this new state. Now,
+// cannot just say 'return' and then a card is just equal to a new card, we
+// actually can in this case, but think about it, what if in the future we had
+// more properties like todos which is equal to something and then something
+// else. So, what is that going to do is overwrite all the data in the Redux
+// Store with the new object that we are returning in which we will not have the
+// todos properties on it and so on and so forth.
+
+// So, we should not be doing that, we do want to take the current state and we
+// need to spread it like this "...state". So, all of the other properties from
+// the Redux Store are returned inside this object and then we overwrite the
+// "cards" array with newCards. Thats what we need to do.
+
+// Now after that, inside the switch statement we need to return this old state
+// as default. It is when the action is not 'DELETE_CARD' and something else, in
+// that case we need to return the state as it is.
+
+// Now, if we delete a card by clicking the Delete button on that card then that
+// card goes away but we get an error saying "Cannot read property 'title' of
+// undefined". That is cause now we do not have any card that has the route
+// parameter with the title of the card that we deleted.
+
+// Now, what we want is that immediately after clicking the Delete button, the
+// browser should redirect the user directly to the Contact page instead of
+// seeing that Card page which was deleted. We will continue that in the Card.js
+// file.
+
+// --------------------------------------------------------------------------- //
+
+// First of all we will add the user property to our Redux Store (line-19) and
+// then inside the rootReducer() function we will add a new case called "FETCH_USERS",
+// so if the action type is "FETCH_USERS" we are going to return an object and that will
+// be our original state (line-34), followed by the updated state of the Redux Store
+// (line-35). So, it will first "...state" will give us all the properties of the Redux
+// Store and then we are going to override users with whatever is coming from the JSON
+// API.
+
+// We will write "users: action.payload". So, now lets go back to Card.js file again and
+// see the users that we received from the JSON API. 
+
+src/components/Card.js
+
+import React from 'react';
+import { connect } from 'react-redux';
+import { deleteCard, fetchUsers } from '../actions/cardActions';
+
+class Card extends React.Component {
+
+//  state = { user: '' }
+
+componentDidMount() {
+  this.props.fetchUsers()
+}
+
+onButtonClick = () => {
+  let id = this.props.card.id;
+  this.props.deleteCard(id)
+  this.props.history.push('/contact')
+}
+
+  render() {
+//    const { user } = this.state
+//    console.log("----------HIT-----------");
+//    console.log(this.props);
+    const { users } = this.props
+    return(
+      users.map(user => {
+        return(
+          <div
+            className="ui raised very padded text container segment"
+            style={{ marginTop:'80px' }}
+            key={user.id}
+          >
+            <h3 className="ui header">{ user.name }</h3>
+            <p>{ user.email }</p>
+            <button className="ui primary right floated button" onClick={this.onButtonClick}>
+              Delete
+            </button>
+          </div>
+        )
+      })
+    )
+  }
+}
+
+const mapStateToProps = (state, ownProps) => {
+  let title = ownProps.match.params.user;
+  return {
+    card: state.cards.find((x) => {
+      return x.title === title
+    }),
+    users: state.users
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteCard: (id) => { dispatch(deleteCard(id)) },   // Dispatching the action object to the React component
+    fetchUsers: () => { dispatch(fetchUsers()) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Card);
+
+// We want to receive the user data from the Redux Store when we click on any
+// user's name on the Contact page. We want to show each individual user and the
+// data that belongs to the user that is inside the Redux Store.
+
+// Instead of showing the Route parameter we are going to show the data inside
+// the Redux Store in this "Card" React Component. Previously, we were getting
+// the user data from the App.js using the React Router and were showing it on
+// the user page but now we will use the Redux Store to get that data.
+
+// Now what we are going to do is connect the "Card" React Component to the
+// Redux Store and then get that individual card to show on the page.
+
+// First, we will comment out the componentDidMount() as we don't need that
+// anymore and we also commented the state object above it. Then we also have
+// commented out the varible on line-16 too.
+
+// Then we imported the connect() function from React-Redux. Then we used that
+// higher order component to wrap our "Card" component on line-41. Then, we
+// created our mapStateToProps() function. This is where we want to grab that
+// individual card containg user data.
+
+// Now, how can we grab that data? We can take a second argument in that function.
+// Here, we are calling that argument ownProps, and this ownProps refers to the
+// props of this "Card" component. So, the ownProps is going to contain information
+// about the Route parameters and then we can grab the Route parameter from the
+// Route and then we are going use that Route parameter to find a particular
+// card that we want to connect to/from the Redux Store.
+
+// Then we are using the ownProps to grab the Route parameter by assigning the
+// "title" variable to "ownProps.match.params.user", and this is from where we
+// get the information on the Route parameters.
+
+// The Route parameter that we want is called the user because in our App.js file
+// it was called the user (<Route path="/:user" element={ <Card /> } />). Then,
+// when we set up the route we are grabbing the route parameter from
+// "ownProps.match.params.user", whether it is Alex, Willma or whatever the user
+// it is and we are storing it in the "title" variable. Then, we return the object
+// and inside the retrun statement we need to write what we want to apply to our
+// props for this "Card" React Component.
+
+// So, we want an individual card and that is going to be "state.cards" that we
+// received from the Redux Store and then we want to find one individual card to
+// show on the browser and to do that we are going to use the find() method and
+// this is just a normal JavaScript method, state.cards.find().
+
+// Now, inside of this method we are going to check if the x.title is equal to
+// the title variable that we declared before defining the return statement.
+// So, the 'x' variable is going to iterate through the "cards" array inside the
+// state object and it is going to look at the title of each card and if that title
+// matches the title of the user in the route parameter (ownProps.match.params.user)
+// then the function will return that card.
+
+// Then we pass this mapStateToProps() function to the connect() function as our
+// first argument and now we can get that card and show it on the browser.
+
+// The Card React Component is receiving the card as a prop and we are grabbing
+// the title and body from that card and then displaying those two properties
+// on this Card component.
+
+// -------------------------------------------------------------------------- //
+
+// Now, what if we want to change the data in the Redux Store. For example, we
+// want to delete one of the cards in the store. So, how can we do that?
+
+// So, first we want a delete button or something to delete that card. Then we
+// need to interact with the state of this React component.
+
+// We have the data in the Redux Store and we passed that data via the props to
+// this React component using the mapStateToProps() function. So, now if we want
+// want to make a change to this data in the Redux Store then we need to dispatch
+// an action from this React component and that action is going to contain a type,
+// for eaxmple 'delete card' or 'edit card' or whatever we want it to be; and it
+// also going to contain an optional payload.
+
+// So, in the case of deleting a card, the payload could be the id of the card
+// that we want to delete. Then the action gets dispatched to the Reducer and
+// the Reducer then takes that action and checks the type of that action and
+// then it takes in the payload.
+
+// Now in our case the payload is going to be the id of the card that we want to
+// delete from the Redux Store and the Reducer makes the change to the state of
+// the Redux Store by deleting the card and when the state changes we get the
+// updated state as props inside this React component.
+
+// Now we need to figure out a way to dispatch an action from this "Card" React
+// component and that is pretty easy to do. Before we defined the mapStateToProps()
+// function to connect the Redux Store with this React Component and now we are
+// going to define a function called mapDispatchToProps() and this function is
+// going to map our dispatches to our props so that we can call them from our
+// React component.
+
+// mapDispatchToProps() function is going to take an argument and that argument
+// is the dispatch() method. Here, we are mapping the dispatch to props so we are
+// passing this dispatch() function which is in the Redux Store into this
+// mapDispatchToProps() function as an argument and the dispatch() function will
+// contain the action object inside of it which the mapDispatchToProps() function
+// will return to this "Card" React component just like the mapStateToProps()
+// function.
+
+// This action object is going to represent properties that we will get as props
+// inside of this React component, just like we did the case of mapStateToProps()
+// function.
+
+// So, we want to map a function called deleteCard() inside the React component
+// because we are going to delete a card inside this React component.
+
+// So, what we want to do with the deleteCard() function is dispatch an action.
+// The deleteCard() function is going to take an argument and the argument is
+// going to be the id property of the card that we want to delete and with that
+// it will also take the type property.
+
+// We need to declare the id property inside the action object and assign that
+// property to the id that we receive with the deleteCard() function as an
+// argument.
+
+// So, now we are dispatching this action whenever we call the mapDispatchToProps()
+// function and this function is going to be attached to our props so that we can
+// use it inside this React component, but before we do that we need to take this
+// mapDispatchToProps() function and we need to pass it into the connect() function
+// as an argument as we did with the mapStateToProps() function.
+
+// So, mapStateToProps() function is always going to be the first arguemnt being
+// passed and mapDispatchToProps() function is going to be the second one after
+// that.
+
+// We need some kind of button which will trigger the deleteCard() function, so
+// lets define that button under the body of the "Card" component.
+
+// We need to attach a click event to this button and this click event function
+// is going to be called onButtonClick() and this is going to be an arrow function
+// that we are going to define before our render() method.
+
+// Inside the onButtonClick() function we need to call the deleteCard() function
+// so that it gets triggered when the user clicks the Delete button. But remember
+// we pass the id as an argument to the deleteCard() function so it expects an
+// id as an argument to this function, so we need to send the id of this card.
+
+// The id is coming from the "cards" array in the Redux Store from the rootReducer
+// which is connected to the React component using the connect() function, thats
+// why we used the "this.props" to get the id in the onButtonClick() function.
+
+// Now, we will go the rootReducer.js file, because that is where we receive the
+// action.
+
+// -------------------------------------------------------------------------- //
+
+// So, in the last section we created the onClick() event handler and whenever
+// we click the Delete button, it calls the deleteCard() method and the
+// deleteCard() method dispatches the 'DELETE_CARD' action from the
+// mapDispatchToProps() to the Reducer, so whenever that action gets dispatched,
+// the Reducer receives the action.
+
+// So, now we need to delete one of the cards from the Redux store, so lets
+// continue at the rootReducer.js file.
+
+// So, now we will look at the definition of the onClick event function which
+// calls the deleteCard() function. This is where we need to redirect the user
+// to the Contact page. After we call the deleteCard() function inside the
+// onButtonClick() function we can use the React built-in push() method to
+// redirect the user to the Contact page like this "this.props.history.push(/'contact')".
+
+// Now, if we click the Delete button on a particular card inside its page then
+// we will get redirected back to the Contact page which will not have the card
+// that was deleted.
+
+// This is how we mapDispatchToProps. How we call that dispatch from the component?
+// When that dispatch is received in the Reducer? And how we can update the state?
+// That is pretty much what Redux is in a nutshell.
+
+// ------------------------------------------------------------------------------------- //
+
+// First of all we need to import out fetchUsers() action in this file (line-3).
+// Then we need to dispatch this action in our mapDispatchToProps() function (line-57)
+// and this returns a function that dispatches an action and the the action is going
+// to be fetchUsers().
+
+// Now the only thing that we need to do is call that function. So, whenever we call that
+// function it is going to call the fetchUsers() action from the cardActions.js file and
+// then that action creator is going to make a request to an API and then the API is going
+// to return us the data. Then we are dispatching the data to the reducer.
+
+// Alright, lets call this function. So, we are going to call it inside the componentDidMount()
+// lifecycle method and we want to get the data after the component mounting is done. So, we can
+// reach the data in the Redux Store inside of our reducer. So, lets go back to the rootReducer.js
+// file.
+
+// ------------------------------------------------------------------------------------------------- //
+
+// Here we will work with the users that we received from the JSON API using the fetchUsers() action
+// creator, in the mapStateToProps() function we will assign a new state to the called "users" to
+// state of the users we are receiving from out fetchUsers() action creator function (line-50).
+
+// Now our Card React component can get that updated state as props from the mapStateToProps() function
+// as "this.props.users" which we are assigning to the user variable (line-23). Now, we can map on that
+// JSON user data using our .map() function and we are assigning the "user" variable to iterate through
+// each of the items in the objects of that array and display them accordingly on each card.
+
+// So, that is Redux Thunk. It might seem a little bit confusing but actually its not, you just need to
+// get into some practice. Ok to sum all these up quickly, the Card React component is calling an action
+// creator (line-10) called fetchUsers() and that is happening inside the componentDidMount() method it is
+// calling the component after the component is mounted on the DOM. It will automatically call the fetchUsers()
+// action creator and then the axios in the cardActions.js file, makes an API request to the JSON API, so its
+// reaching out to the API, the API is grabbing some data and returning it to the action and then we are
+// dispatching that data to the reducer in the rootReducer.js file as the action parameter to the rootReducer()
+// function (line-22).
+
+// So, usually all action creators are expected to return JavaScript objects but when we are using Redux Thunk
+// or in other words when we need to execute some asynchronous actions then we are going to be returning a function
+// because we need to invoke that function as a prop inside the component to execute the API request.
+
+// Then we dispatch that action to the reducer with the property type and payload, then we update the Redux Store state
+// and in this case we update the user's property inside the rootReducer() and then we reach the new updated state with
+// the mapStateToProps() function inside the React component.
+
+// Alright! So, the more you use the dispatch in different components, the more you will be using action creators or Redux
+// Thunk or whatever, and we will be more confident and you are going to really like using Redux. After using it for a short
+// period of time, its going to be that piece of cake. 

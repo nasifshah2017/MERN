@@ -1,0 +1,219 @@
+Redux Stores
+
+import { createStore } from 'redux';					
+
+const initialState = {
+	todos: [],
+	posts: []
+};
+
+function reducer(state = initailState, action) {
+
+}
+
+const store = createStore(reducer);
+
+
+									Redux Actions 
+
+
+import { createStore } from 'redux';					// const { createStore } = Redux;
+const initialState = {
+	todos: [],
+	posts: []
+};
+
+function reducer(state = initialState, action) {
+	console.log(action, state);
+};
+
+const store = createStore(reducer); 					// Creating the Redux Store
+const addTodoAction = { type: "ADD_TODO", payload: 'learn redux'};	// Creating an Action
+store.dispatch(addTodoAction);						// Dispatching the addTodoAction to the Reducer
+
+
+Output on the Console:
+
+Object {
+	type: "@@redux/INITq.0.1.a.z"
+}
+Object {
+	posts: [],
+	todos: []
+}
+
+// The above data outputs on the console when we declare the "store" variable 
+// const store = createStore(reducer)
+
+Object {
+	payload: "learn redux",
+	type: "ADD_TODO"
+}
+Object {
+	posts: [],
+	todos: [] 
+}
+
+// The above data outputs on the console when we dispatch the Action to the Reducer
+// store.dispatch(addTodoAction)
+
+									Reducers
+
+import { createStore } from 'redux';
+
+const initialState = {
+	todos: [],
+	posts: []
+};
+
+function reducer(state = initialState, action) {
+	if(action.type === 'ADD_TODO') {
+		return {
+			todos: [...state.todos, action.payload]
+		}
+	}
+};
+
+const store = createStore(reducer);
+const addTodoAction = { type: 'ADD_TODO', payload: 'learn redux'};
+store.dispatch(addTodoAction);
+
+Output to the Console:
+
+Object {
+	payload: "learn redux",
+	type: "ADD_TODO"
+}
+Object {
+	posts: [],
+	todos: []
+}
+
+									Store Subscription
+
+import { createStore } from 'redux';
+
+const initialState = {
+	todos: [],
+	posts: []
+};
+
+function reducer(state = initialState, action) {
+	if(action.type === 'ADD_TODO') {
+		return {
+			todos: [...state.todos, action.payload]
+		}
+	}
+};
+
+const store = createStore(reducer);
+
+store.subscription(() => {				// Subscribing React to the Redux Store
+	console.log('state updated');
+	console.log(store.getState());
+});
+
+const addTodoAction = { type: 'ADD_TODO", payload: 'learn redux' };
+store.dispatch(addTodoAction);
+
+Output to the Console: 
+
+state updated
+
+Object {
+	todos: ["learn redux"]
+}
+
+
+import { createStore } from 'redux';
+
+const initialState = {
+	todos: [],
+	posts: []
+};
+
+function reducer(state = initialState, action) {
+	if(action.type === 'ADD_TODO') {
+		return {
+			...state,
+			todos: [...state.todos, action.payload]
+		}
+	}
+};
+
+const store = createStore(reducer);
+
+store.subscribe(() => {
+	console.log('state updated');
+	console.log(store.getState());
+});
+
+const addTodoAction = { type: 'ADD_TODO', payload: 'learn redux' }
+store.dispatch(addTodoAction);
+
+Output to the Console: 
+
+state updated
+
+Object {
+	posts: [],
+	todos: ["learn redux"]
+}
+
+
+import { createStore } from 'redux';
+
+const initialState = {
+	todos: [],
+	posts: []
+};
+
+function reducer(state = initialState, action) {
+	if(action.type === 'ADD_TODO') {
+		return {
+			...state,
+			todos: [...state.todos, action.payload]
+		}
+	}
+	
+	if(action.type === 'ADD_POST') {
+		return {
+			...state,
+			posts: [...state.posts, action.payload]
+		}
+	}
+};
+
+const store = createStore(reducer);
+
+store.subscribe(() => {
+	console.log('state updated');
+	console.log(store.getState());
+});
+
+store.dispatch({ type: 'ADD_TODO', payload: 'learn redux' });
+store.dispatch({ type: 'ADD_TODO', payload: 'learn react' });
+store.dispatch({ type: 'ADD_POST', payload: 'play football' });
+
+Output to the Console:
+
+state updated
+
+Object {
+	posts: [],
+	todos: ["learn redux"]
+}
+
+state updated 
+
+Object {
+	posts: [],
+	todos: ["learn redux", "learn react"]
+}
+
+state updated
+
+Object {
+	posts: ["play football"],
+	todos: ["learn redux", "learn react"]
+}

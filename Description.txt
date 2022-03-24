@@ -1,0 +1,400 @@
+Web development, Full stack web development, Front end web development, Web developer, Backend web development, Website development, NodeJS - The Complete Guide, MVC, REST APIs, GraphQL, Deno, nodejs, node js, node.js, express js, graphql, rest api, deno
+
+Hello there,
+
+Welcome to the "Mern Full Stack Web Application with React & Web Development" course.
+
+Full Stack Web Development with React projects & Web Application with React JS, NodeJS, Express JS, MongoDB: Mern Stack
+
+Master Node JS & Deno.js, build REST APIs with Node.js, GraphQL APIs, add Authentication, use MongoDB, SQL & much more!
+
+In this course, you will learn to develop a web application with React JS, Redux, Hooks & Context, NodeJS, and MongoDB from scratch. React, or React js, React Native, Reactjs, Nodejs, Nodejs Express, Advanced nodejs, Nodejs api, React nodejs, Rest api nodejs, Mongodb, Nodejs, Mongodb python, Mongodb administration, Mongodb certification, Mongodb java, Nodejs mongodb Express, Python mongodb, React js, React js complete guide, React js and node js.
+
+Each aspect of creating websites and applications entails a unique set of skills. Udemy offers a host of courses to bring you up to speed on modern front-end, back-end, and fullstack web development practices and skills.
+
+The world of web development is as wide as the internet itself. Much of our social and vocational lives play out on the internet, which prompts new industries aimed at creating, managing, and debugging the websites and applications that we increasingly rely on.
+
+React is an essential Javascript framework for web development. It is the most popular framework for developing web, mobile, and desktop app user interfaces.
+
+Whether you’re interested in adding React to your existing dev skillset, or you want to develop full-stack web apps by using tools like NodeJS, Redux, and MongoDB in conjunction with React, Udemy has a comprehensive selection of courses to choose from.
+
+If you are thinking to start to learn ReactJS, this course is the best match for you.
+
+We have explained React from beginner to all levels. We have explained all the topics as simple as possible with examples, slides, and diagrams.
+
+MongoDB is a document-oriented data store that is easy to get started with but also scales well as your application grows. It’s schemaless nature allows greater flexibility or changing application requirements. It’s one of the best databases in terms of developer productivity.
+
+MongoDB is an document-oriented database designed to allow developers to scale their applications to meet scalability demands. MongoDB features a flexible document model that allows for accelerated development productivity so that you can release better applications, faster.
+
+Whether you’re interested in adding React to your existing dev skillset, or you want to develop full-stack web apps by using tools like NodeJS, Redux, and MongoDB in conjunction with React, Udemy has a comprehensive selection of courses to choose from.
+
+We have created a lot of projects while explaining the subjects. Because we believe that applied educations are much more useful than other teaching methods.
+
+We explained all the subjects with simple examples and applications, and explanatory diagrams in a way that the student can understand at all levels.
+
+We paid attention to explain all the topics in order. Because we think that the order of presentation of the subject is as important as the content of education. We have seen this shortcoming in many pieces of training we have examined and tried to explain these issues to you in the best way.
+
+"Instaverse MERN Stack Project". In this course, we will be building a full-stack Social Media project application using Node.js, Express, React, and MongoDB.
+
+This is not an "Intro to React" or "Intro to Node" course. It is a practical hands-on course for building an app using the incredible MERN Stack.
+
+This course project is probably the biggest and most exciting project you have built so far. It is packed with hundreds of tips and tricks that can help you build almost any type of full-stack app (not limited to this project).
+
+You can build the biggest and most complex apps of your dream or as required at your job. Master the stack of all stacks and become the most productive and innovative developer of your team. I welcome you to be a part of this incredible journey.
+
+No Previous Knowledge is needed!
+
+You don’t need to have previous knowledge about React. This course will take you from a beginner to a more advanced level with hands-on examples.
+
+You will be confident in using React JS, and if you ever get stuck, we will be there to help.
+
+Learn by doing!
+
+So we have made this course as simple as possible in order to take you through step by step so you can feel confident and get a truly good understanding of how to utilize ReactJS. In this course, we will be teaching React by creating various projects.
+
+In this Full React Js course, you will learn;
+
+How to create Single Page Web Application with React JS.
+
+The most important React topics like components, props, state and component life cycle methods
+
+How to send requests to an API and fetch data.
+
+How to create a multi-page web app with react-router-dom.
+
+How to manage the data of our application with the redux library.
+
+We will learn how to perform asynchronous operations with Redux thunk.
+
+How to create a context with a class-based component.
+
+How to consume context with ‘context consumer’.
+
+How to consume context with ‘static contextType’.
+
+How to manipulate context data in class-based components.
+
+The most important hook functions like useState, useEffect, useReducer, and useContext.
+
+How powerful when we use context and hooks together
+
+How to easily build the largest and most advanced react applications
+
+The logic behind MongoDB’s data storage
+
+The most popular Object Data Modeling Library for MongoDB, Mongoose JS
+
+Writing queries for creating, reading, updating, and deleting operations
+
+Advanced Features of MongooseJS4
+
+Building an extensive backend API with Node.js & Express
+
+Building our frontend to work with the API
+
+Integrating React with our backend and creating a great workflow
+
+Get, Post, Patch and Delete Request using MongoDB
+
+State management with Redux
+
+React Hooks, Async/Await & modern practices
+
+Create a CRUD Application with MERN Stack
+
+Handling Forms
+
+JWT Authentication
+
+Creating a build script, securing our keys, and deploy to Heroku using Git
+
+Web development
+
+Full stack web development
+
+Front end web development
+
+Web developer
+
+Backend web development
+
+Website development
+
+React, or React js
+
+React Native
+
+Reactjs
+
+Nodejs
+
+Nodejs Express
+
+Advanced nodejs
+
+Nodejs api
+
+React nodejs
+
+Rest api nodejs
+
+MongoDB
+
+Nodejs
+
+MongoDB python
+
+MongoDB administration
+
+MongoDB certification
+
+MongoDB java
+
+Nodejs mongodb Express
+
+Python MongoDB
+
+React js
+
+React js complete guide
+
+React js and node js
+
+Web development with react js, mern stack
+
+React js full stack
+
+Mern full stack projects with express js, MongoDB, nodejs
+
+Full-stack react projects with redux, hooks, and context
+
+Front end web development
+
+Backend web development
+
+At the end of the course
+
+By the end of the course, you will be able to build amazing React single page web applications.
+
+Why would you want to take this course? 
+
+Our answer is simple: The quality of teaching.
+
+OAK Academy based in London is an online education company. OAK Academy gives education in the field of IT, Software, Design, development in English, Portuguese, Spanish, Turkish, and a lot of different languages on the Udemy platform where it has over 1000 hours of video education lessons. OAK Academy both increase its education series number by publishing new courses, and it makes students aware of all the innovations of already published courses by upgrading.
+
+When you enroll, you will feel the OAK Academy`s seasoned developers' expertise. Questions sent by students to our instructors are answered by our instructors within 48 hours at the latest.
+
+Fresh Content
+
+It’s no secret how technology is advancing at a rapid rate. New tools are released every day, and it’s crucial to stay on top of the latest knowledge for being a better React developer. You will always have up-to-date content for this course at no extra charge.
+
+What is Web development?
+
+Web development is a broad description of the tasks and technologies that go into creating a website. It can be as simple as making a static text-based website or as elaborate as developing an interactive dynamic website. You can break web development into two different categories: frontend (client-side) and backend (server-side). Frontend code executes on the user's computer. This can include HTML, JavaScript, and CSS. Backend code runs on the server — this commonly includes communicating with a database and often involves languages like Python, Ruby, Java, or PHP. Web development does not necessarily include the design process — it focuses on code. A web designer builds wireframes to mockup their vision for a website and then shares that with a developer. The developer is responsible for writing the code that implements the design.
+
+What are the steps to becoming a web developer?
+
+Some web developers will obtain a degree or certification in the field. However, most jobs don't require a specific degree or level of education, just demonstrated knowledge of the field. So, it is more important that you know how to show off your skills. You could highlight your skills through relevant work experience or a portfolio of past projects. You might also share code you have developed using a platform like GitHub, or participate in solution-based forums like StackOverflow that reward you for helping others. HTML, CSS, and JavaScript are the first three coding languages you'll need to learn to break into web development. You need these three essential elements to create a modern website and work as a front-end web developer. HTML (Hyper-Text Markup Language) specifies the content of the website and builds the backbone. CSS (Cascading Style Sheets) styles the content. JavaScript controls the interactive elements of the website.
+
+How long does it take to become a web developer?
+
+The answer to this question will depend on you. The more time you spend developing your skills, the faster you can become a web developer. The good news is that web development generally uses lightweight code that is easier to learn than many other languages. If dedicated, you can learn the basics of web development in a couple of months. But good web developers never stop learning. A better question might be, "What can I do to become a better web developer faster?" The answer to this question is practice. Becoming familiar with coding helps tremendously, but there is also a less obvious benefit of practicing. The more you code, the more you will run into problems or find bugs in your code. A significant aspect of web development is solving problems and debugging code. The better you get at solving problems and tracking down bugs, the faster you will get at coding.
+
+What is React?
+
+React is a front-end library in Javascript that was developed by Facebook. The simplest definition of React is that it is a user interface library used for building UI components for the web. But if that was all React did, it would be little more than a template library. Developers define components in React by using an HTML-like syntax called JSX. These encapsulated components manage their own state, making it simple to pass rich data to a component and keep the state of the application and its components out of the Document Object Model (DOM). These features give React components the ability to react dynamically and efficiently to changes in their state. A set of simple components in React can be composed into either simple single-page applications or large, complex web applications.
+
+What is React used for?
+
+React is an open-source JavaScript frontend library. Some developers consider it a frontend framework because it does more than standard libraries usually do. The most common use of React is to build dynamic user interfaces for single-page web applications. But the structure of React makes it useful for more than just creating websites. JSX, which is one feature of React, is a syntax extension for Javascript that provides a template for the HTML and manages the state of the element. But JSX can be used as an interface for things other than HTML. React Native uses React to build mobile applications. Here, JSX becomes an interface for mobile UIs instead of HTML. There are even a few libraries that use React and JSX to interact with and manage hardware like React Hardware.
+
+How does React work?
+
+React encourages engineers to write code using a Functional Programming approach. Engineers create components, which are normal Javascript functions. These functions return information to tell React what content should be displayed on the screen. The real power of React comes from the ability to nest or compose these functions inside of one another. This nesting ability encourages code reuse and allows an engineer to write a component a single time, but in many different places.
+
+Is React a framework or library?
+
+Frameworks provide an opinionated approach to building an entire application. Libraries, on the other hand, assist in building a single aspect of an application. With this in mind, React is a library. It assists engineers in presenting HTML in the browser. React has no opinions on how data is fetched, how styling is applied, or how the app is deployed or built.
+
+What is React Native?
+
+Created by Facebook, React Native is an open-source-based mobile application framework that uses only JavaScript, making it capable of supporting both Android and iOS platforms. React, also known as React.js, saves time and effort for developers since they only need one programming language. The Native element allows developers to create JavaScript components to design software programs that run on various devices and platforms, such as smartphones, smart TVs, and laptops. With React Native, developers use the same concepts used in the original React framework to design a rich mobile user interface (UI) for various environments from existing components.
+
+Is React worth learning?
+
+Yes, React is worth learning. There are a couple of reasons. The first one is that React is in high demand in the software development job market and has been for a few years. If you learn to code in React and can do it well, you will increase your chances of finding a job. This alone is another reason it is worth learning. Website users no longer will settle for old-fashioned sites that won't update without a page reload. React’s method of dynamically updating the HTML of a web page fits these users' needs and improves their experience. React has also been around a few years and has stood the test of time. A large portion of websites, both small and large, use React as a frontend framework.
+
+Is React hard to learn?
+
+Every technology or programming language has a learning curve, and React is no different. But it is easy to learn if you are dedicated and determined to create frontend web applications. To make learning React simpler, you should stick to the basics of React before you add any extra libraries, as that will only complicate your learning experience in the beginning. Since React is a Javascript framework, a solid grounding in Javascript will give you a head start. With this knowledge, the unique concept of JSX, React's templating language, and the way React uses state will be much easier to grasp.
+
+What is the difference between React Native and ReactJS, and which one should I learn?
+
+React, or React.JS, is a front-end Javascript library for building UI components for the web. If you are interested in web development, React is the perfect library to learn to create interactive, dynamic single-page apps, or even full-scale web applications. React Native is a framework for building native mobile applications for both the Android phone and Apple's iPhone. React Native is still React, which means the syntax and workflow for building applications are basically the same, but the generated components are different. In React, web components are generated. In React Native, the generated components interact with a phone's native APIs. If your focus is web development, then you should learn React. If you want to build mobile applications, it is best to learn React first and become familiar with the technology before you try React Native.
+
+Why is React so popular?
+
+There are many reasons why React is popular. One reason is that Facebook developed it. The social proof is that if it is good enough for Facebook, one of the most popular social networks on the web, it should be good enough for other applications. React also solved many of the past issues that developers had with developing single-page applications (SPAs). React came out when SPAs were becoming popular, and all the existing frameworks to build them made development complicated and prone to bugs. One feature that makes it better than past libraries is that React is relatively easy to use. Its components are reusable, plus React's use of the virtual DOM makes it very performant. React should remain popular in the future as each new release brings new features and performance improvements.
+
+What is Node.Js and what is it used for?
+
+Node.Js is a server environment built for fast and easily scalable network applications. It was built on Chrome’s JavaScript runtime and uses an event-driven, non-blocking model that makes it the best fit for applications that run on distributed devices and need to run in real-time. By using JavaScript, node.Js can be put to work by many software developers familiar with JavaScript. Because the code is open-source, you can also use it on any platform (Mac OS, Windows, or Linux). Node.js is the architecture for creating websites and real-time applications because it’s easy for teams to learn, and it’s fast. Examples of applications that use node.Js include video conferencing apps, chat servers, eCommerce software, and collaborative online gaming.
+
+What are the advantages of Node.Js?
+
+Node.Js is open-source, meaning it’s free code for all developers. On top of that, it also means that there is a thriving community of Node.Js users and programmers that all add to the knowledge base. Many are happy to share their flavor of the code with other developers, and collectively, the Node.Js environment continues to be enhanced. Because Node.Js uses JavaScript, there is a large pool of developers that understand and can code in the environment. It’s also a relatively simple environment for new team members to learn, making it an efficient choice for development teams with people that need training. Node.Js was developed on Push technology instead of web sockets, which is why it’s the preferred choice for real-time communication applications and programs that need to be highly scalable.
+
+What does it mean that Node.Js is a runtime system?
+
+A runtime system is a platform where a software program runs. It’s essentially an environment housing the collection of software and hardware that allows an application to execute (or run). Node.Js is a runtime system because it provides the environment necessary for applications to run within it, and no additional code or hardware is required. Because Node.Js makes use of JavaScript, it’s a runtime system that provides a framework where you can use JavaScript to create and run programs. The JavaScript programming language (which is quite popular) is then automatically translated into machine code for the hardware to run the program in real-time. It’s an efficient system, making it the preferred choice for many software and tech companies.
+
+What is microservices architecture and how can Node.Js be used for it?
+
+Microservices architecture is a software development style or method where single-function modules originate. Each has a very well-defined operation and interface and can deploy on its own. In essence, it’s a way of developing modules that you can repurpose from one program or application to another. When you create an application, it’s a collection of modules that have been thoroughly tested and are well-maintained. The modules are typically built around different business-specific capabilities and are then loosely coupled to other modules when deployed as part of a program. You can use Node.Js in microservices architecture as the language of choice for one, some, or all of the microservices (or modules). The beauty of microservices is that you can use the best language for the specific microservice. But where highly scalable, fast programs are needed, Node.Js would be a top contender.
+
+
+
+Video and Audio Production Quality
+
+All our content is created/produced as high-quality video/audio to provide you with the best learning experience.
+
+You will be,
+
+Seeing clearly
+
+Hearing clearly
+
+Moving through the course without distractions
+
+You'll also get:
+
+Lifetime Access to The Course
+
+Fast & Friendly Support in the Q&A section
+
+Udemy Certificate of Completion Ready for Download
+
+Dive in now!
+
+Mern Full Stack Web Application with React & Web Development
+
+We offer full support, answering any questions.
+
+See you in the class!
+
+What you’ll learn
+This is the full stack web development with React JS course. You will learn React JS, Redux, Hooks and Context, NodeJs and Mongo DB
+You will learn Mern stack, Web Development, React JS with hands-on examples
+Mern Full Stack Web Application with React & Web Development
+Learn how to create Single Page Web Application with React JS
+Create reusable React Components for Web development and Mern stack project
+User Inputs, Forms and Events in React with Redux, hooks and context
+Learn to create multi-page web app with react-router-dom for Web development
+We will learn how to perform asynchronous operations with Redux thunk
+Learn to consume context with Context Consumer for full stack web development
+How to manipulate context data in class-based components in React JS, Redux, Hooks and Context
+Learn how powerfull when we use Context and Hooks together
+Learn components, props, states and component life cycle methods in React JS
+Learn sending request to an API and fetch data in React
+Routing with React Router for using Full Stack Web development
+Manage the data of our application with the Redux library
+Create context with class-based component
+Learn how to consume context with static contextType
+Learn the most important hook functions like, useState, useEffect, useReducer and useContext
+Learn how to easily build the largest and most advanced React applications
+Dive into Nodejs, learn rapidy growing web server technology, Nodejs & understand how NodeJS works with Node course!
+By learning growing web server technology, Nodejs, you can improve your skills, get a new job and you can build powerful, robust web applications.
+Learn the key concepts of the NodeJS
+Learn to create servers, and understand how it works
+Understand and use the Event Emitter
+Understand Buffers, Streams, and Pipes
+Learn routing with NodeJS
+Learn the most used, open-source document database, and NoSQL database aka MongoDB
+Logic behind the MongoDB data storage
+The most popular Object Data Modeling Library for MongoDB, Mongoose JS
+Learn to execute CRUD - write queries to create, read, update and delete operations
+The best testing framework for NodeJS, Mocha
+Learn how easy to use MongoD
+Learning Nodejs is a great way to get into backend web development, or expand your fullstack development practice.
+MongoDB is a document-oriented data store that is easy to get started with but also scales well as your application grows.
+React is a front-end library in Javascript that was developed by Facebook.
+The simplest definition of React is that it is a user interface library used for building UI components for the web.
+React is an open-source JavaScript frontend library. Some developers consider it a frontend framework because it does more than standard libraries usually do.
+React encourages engineers to write code using a Functional Programming approach.
+Engineers create components, which are normal Javascript functions.
+Frameworks provide an opinionated approach to building an entire application.
+Full Stack Web Development using MERN
+Learn how to build backend API using node and express
+React Hooks, Async/Await & modern practices
+Learn how to build powerful and fully functional social media website using MERN
+Learn how to handling forms in React, Nodejs, Express JS
+Learn about Redux (Best state management tool)
+Learn styling with Material-ui
+Learn JWT Authentication
+Full stack, mern stack, mern projects with react js, nodejs, express js, mongodb
+Full stack web development with mern stack project
+React is a front-end library in Javascript that was developed by Facebook.
+Is React a framework or library? Frameworks provide an opinionated approach to building an entire application.
+What is React Native? Created by Facebook, React Native is an open-source-based mobile application framework that uses only JavaScript, making it
+Is React worth learning? Yes, React is worth learning. There are a couple of reasons.
+The first one is that React is in high demand in the software development job market and has been for a few years.
+Is React hard to learn? Every technology or programming language has a learning curve, and React is no different.
+What is the difference between React Native and ReactJS, and which one should I learn? React, or React JS, is a front-end Javascript library for building UI
+Why is React so popular? There are many reasons why React is popular. One reason is that Facebook developed it.
+What is Node Js and what is it used for? NodeJs is a server environment built for fast and easily scalable network applications.
+MongoDB features a flexible document model that allows for accelerated development productivity so that you can release better applications, faster.
+MongoDB is a document-oriented data store that is easy to get started with but also scales well as your application grows.
+React is an essential Javascript framework for web development. It is the most popular framework for developing web, mobile, and desktop app user interfaces.
+Mern stack full application, react application with react js, redux, hooks and context
+Are there any course requirements or prerequisites?
+This course is ideal for people who have a basic knowledge of HTML, CSS, JavaScript but you don’t need to be an expert
+Computer with access to the internet for Full stack Mern web application with React and Web development
+A Windows PC, Mac or Linux Computer for Mern stack projects
+Es6 knowledge would be beneficial but not required for React application and Mern application
+Desire to learn React
+Desire to learn React js
+Desire to learn express js and Mongodb
+React is an essential Javascript framework for web development. It is the most popular framework for developing web, mobile, and desktop app user interfaces.
+Desire to learn React js with nodejs and mongodb, react application (react projects)
+Desire to learn React with redux, hooks and context
+Desire to become full stack web developer
+Desire to learn web development with react js, redux, hooks and context, nodejs, mongodb
+Desire to learn web development with mern full stack (mongodb, express js, react js, nodejs)
+Desire to learn web development with mern full stack (mongodb, express js, react js, nodejs)
+Desire to create real world mern stack projects with react, redux, hooks and context, nodejs, mongodb, express
+Desire to learn mern stack full stack react js, nodejs, express, mongodb
+Desire to become full stack web developer, website developer, frontend web developer, backend web developer
+Nothing else! It’s just you, your computer and your ambition to get started today
+Who this course is for:
+Beginner who wants to be React developer
+Anyone who wants to become an React Application Developer
+Anyone who wants to build amazing React single page web applications
+For those who want to learn React Hooks
+Anyone who wants to learn React Js and its modern face Hooks & Context
+Students who want to learn how to build fast single page web apps
+For those who want to learn React Context API
+Anyone interested in learning an extremely popular technology used by leading tech companies like Facebook, Instagram and Netflix
+Anyone who wants to learn today's most popular front-end architectures and take their Web development skills to the next level and learn a future-oriented technology
+Who wants to learn React-Router, React-Portals and Redux
+Anyone planning a job transformation and wants to become a React developer
+Anyone who wants to learn MongoDB
+Anyone interested in NoSQL Schema
+Professionals who are willing to learn MongoDB Database
+Anyone looking to build a career as a NodeJS developer
+Also, if you are looking to move in React-Native App development, it would be great for starting with React Js. Once you are familiar with concepts like JSX, props and states, same concepts are applied in React Native too. And moving into React Native would be so easy
+People who want to become front end web developer
+People who want to become backend web developer
+People who want to become website developer
+People who want to learn fullstack web development with react js with nodejs and mongodb
+React / Node / JavaScript developers of all skill levels
+Anyone who want to learn about Full Stack Web Development
+Anyone who want to learn MERN stack
+Node developers looking to learn more about front-end technologies (React)
+People who want to become mern stack developer
+People who want to create real world mern stack project with react js, mongodb, express js, nodejs
+People who want to create real world react projects with express js, node js, mongodb
+People who want to create react project with redux, hooks and context
+People who want to learn creating mern stack projects with react, express js, mongodb
+People who want to become mern stack web developer, full stack web developer, frontend web developer, backend web developer
+
+www.udemy.com/course/mern-full-stack-web-application-with-react-web-development

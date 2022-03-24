@@ -1,0 +1,91 @@
+src/reducers/rootReducer.js
+
+const initialState = {
+  cards: [
+  { // Dummy Data
+    id: 1,
+    title: 'Alex',
+    body: 'Bacon ipsum dolor amet boudin salami picanha,beef ham bacon turkey strip steak brisket. Buffalo strip steak boudin andouille 
+    chislic pig. Salami rump filet mignon alcatra brisket.'
+  },
+  {
+    id: 2,
+    title: 'Willma',
+    body: 'Bacon ipsum dolor amet boudin salami picanha,beef ham bacon turkey strip steak brisket. Buffalo strip steak boudin andouille 
+    chislic pig. Salami rump filet mignon alcatra brisket.'
+  },
+  {
+    id: 3,
+    title: 'John',
+    body: 'Bacon ipsum dolor amet boudin salami picanha,beef ham bacon turkey strip steak brisket. Buffalo strip steak boudin andouille 
+    chislic pig. Salami rump filet mignon alcatra brisket.'
+  }]
+}
+
+const rootReducer = (state = initialState, action) => {
+  return state;
+}
+
+export default rootReducer;
+
+
+
+src/components/Contact.js 
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+// import Modal from './Modal';
+
+// Importing the higher order 'connect' component in order to connect this
+// React component with the Redux Store
+
+import { connect } from 'react-redux';
+
+const Contact = (props) => {    // This is the props we are receiving from mapStateToProps() function
+//  console.log(props.cards);
+  return (
+    <div>
+      {
+        props.cards.map(x => {  // Iterating through each item inside the 'cards' data array
+          return(
+            <div
+                className="ui raised very padded text container segment"
+                style={{marginTop:'80px'}}
+                key={x.id}
+              >
+                <Link to={`/${x.title}`} className="ui header">{x.title}</Link>
+                <p>{x.body}</p>
+              </div>
+          )
+        })
+      }
+    </div>
+  )
+}
+
+// Retrieving the 'cards' data array in the state object from the Redux Store
+// in the rootReducer and then mapping it to the props of this React Component
+// by sending the data as props to this React Component.
+
+const mapStateToProps = (state) => {
+  return {
+    cards: state.cards
+  }
+};
+
+// Connecting this React Component with the Redux Store using the higher order
+// connect() function component
+
+export default connect(mapStateToProps)(Contact);
+
+// We are displaying the data coming from the Redux Store. The 'cards' are the
+// data from the Redux. As we grabbed these data from the props, which is coming
+// from the mapStateToProps() function and we are importing the connect() function
+// and invoking the connect() function on line-45 and then we are passing the
+// mapStateToProps() function which returns a higher order component which then
+// wraps our Contact component and provides it with the ability to connect to
+// the Redux Store.
+
+// Then we are receiving the state as the argument in the mapStateToProps()
+// function, then we are storing it inside an object and assiging it to a key
+// called 'cards' and then returning to the Contact React Component as its props. 

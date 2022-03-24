@@ -1,0 +1,33 @@
+Mern stack and React JS Project Files
+You can access all script files belonging to the applications we will make during the course by going to these links;
+
+React JS project files:
+
+https://github.com/OakAcademy/react-router/tree/master/react-router
+
+https://github.com/OakAcademy/blog-posts
+
+https://github.com/OakAcademy/hemisphere
+
+https://github.com/OakAcademy/first-app
+
+https://github.com/OakAcademy/image-list
+
+https://github.com/OakAcademy/contextapi
+
+https://github.com/OakAcademy/hooks-project
+
+https://github.com/OakAcademy/Full-Stack-React-Js-with-Redux-Node.Js-Express.Js-MongoDB/tree/main
+
+NodeJS Project files:
+
+https://github.com/OakAcademy/Node-JS
+
+MongoDB Project Files:
+
+https://github.com/OakAcademy/MongoDB
+
+Mern stack project file:
+
+https://github.com/OakAcademy/Mern-Stack-Project
+
